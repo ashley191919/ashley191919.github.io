@@ -25,5 +25,75 @@
 
     <p>GitHub: <a href="https://github.com/ashley191919" target="_blank">github.com/ashley191919</a></p>
   </div>
+
+  
+  <!-- 🎵 背景音樂控制區 -->
+  <audio id="bgm" loop>
+    <source src="bgm.mp3" type="audio/mpeg">
+  </audio>
+  
+  <div id="music-control">
+    <button id="toggle-music">🎧 開啟音樂</button>
+  </div>
+  
+  <script>
+  $(document).ready(function() {
+    const audio = $("#bgm")[0];
+    let isPlaying = false;
+  
+    // 預設音量低一點（淡淡的背景音樂感覺）
+    audio.volume = 0.2;
+  
+    $("#toggle-music").click(function() {
+      if (isPlaying) {
+        audio.pause();
+        $(this).text("🎧 開啟音樂");
+        $(this).css({ backgroundColor: "#f4e1d2", color: "#7d5a50" });
+      } else {
+        audio.play();
+        $(this).text("🔇 關閉音樂");
+        $(this).css({ backgroundColor: "#7d5a50", color: "#fff" });
+      }
+      isPlaying = !isPlaying;
+    });
+  
+    // 頁面載入時淡淡播放（有些瀏覽器需使用者互動後才會生效）
+    try {
+      audio.play().then(() => {
+        isPlaying = true;
+        $("#toggle-music").text("🔇 關閉音樂");
+      }).catch(() => {
+        console.log("需要使用者互動後才能播放音樂");
+      });
+    } catch (e) {}
+  });
+  </script>
+  
+  <style>
+  #music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  #toggle-music {
+    background-color: #f4e1d2;
+    color: #7d5a50;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  #toggle-music:hover {
+    background-color: #b86b50;
+    color: #fff;
+    transform: scale(1.05);
+  }
+  </style>
+  
 </body>
 </html>
