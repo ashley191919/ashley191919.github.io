@@ -16,7 +16,26 @@ $(document).ready(function() {
     });
   });
 
-  // 打字動畫（首頁限定）
+  // 夜間模式切換
+  $("#toggleDark").click(function() {
+    $("body").toggleClass("dark-mode");
+    const mode = $("body").hasClass("dark-mode") ? "☀️" : "🌙";
+    $(this).text(mode);
+  });
+
+  // 背景音樂播放控制
+  const bgm = $("#bgm")[0];
+  $("#toggleMusic").click(function() {
+    if (bgm.paused) {
+      bgm.play();
+      $(this).text("🔈");
+    } else {
+      bgm.pause();
+      $(this).text("🔇");
+    }
+  });
+
+  // 首頁打字效果
   if ($("#typing").length) {
     const text = $("#typing").text();
     $("#typing").text("");
@@ -30,11 +49,4 @@ $(document).ready(function() {
     }
     typeChar();
   }
-
-  // 波紋效果（按鈕）
-  $("button").on("click", function(e) {
-    const ripple = $(this).find("::after");
-    $(this).addClass("ripple");
-    setTimeout(() => $(this).removeClass("ripple"), 600);
-  });
 });
