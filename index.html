@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My GitHub Personal Page</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>首頁 - Ashley</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Hello~我是Ashley 歡迎來到我的 GitHub Page</h1>
-  <p>Hello, I’m learning HTML, CSS, JavaScript, and jQuery!</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="timeline.html">學習經歷</a>
+    <a href="goals.html">目標與方向</a>
+    <a href="hobbies.html">生活與興趣</a>
+    <a href="contact.html">聯絡方式</a>
+  </nav>
 
-  <button id="colorBtn">Change Background</button>
-
-  <script>
-    $("#colorBtn").click(function() {
-      $("body").css("background-color", "lightblue");
-    });
-  </script>
+  <div class="container">
+    <h1>Hello~我是 Ashley</h1>
+    <p>輔仁大學醫學資訊與創新應用學士學位學程 大二學生</p>
+    <p>歡迎來到我的個人網站！</p>
+  </div>
 </body>
 </html>
