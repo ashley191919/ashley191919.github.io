@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>生活與興趣</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
 </head>
 <body>
   <nav>
@@ -16,32 +17,23 @@
     <a href="contact.html">聯絡方式</a>
   </nav>
 
+  <div id="controls">
+    <button id="toggleDark">🌙</button>
+    <button id="toggleMusic">🔇</button>
+  </div>
+  <audio id="bgm" src="bgm.mp3" loop></audio>
+
   <div class="container">
     <h1>生活與興趣</h1>
-    <p>
-      我喜歡在放鬆時間閱讀小說、沉浸音樂世界~📖🎧<br>
-      以下有幾首我喜歡的音樂推薦給大家：
-    </p>
+    <p>我喜歡在放鬆時間閱讀小說、沉浸在音樂世界 📖🎧<br>以下是我喜歡的音樂推薦：</p>
 
-    <h2>音樂推薦</h2>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=Rd2wppggYxo&list=RDRd2wppggYxo&start_radio=1" target="_blank">Party O'clock</a></li>
-      <li><a href="https://www.youtube.com/watch?v=EmeW6li6bbo&list=RDEmeW6li6bbo&start_radio=1" target="_blank">Blue Valentine</a></li>
-      <li><a href="https://www.youtube.com/watch?v=34FwKqTKAW8&list=RD34FwKqTKAW8&start_radio=1" target="_blank">Shape of Love</a></li>
-      <li><a href="https://www.youtube.com/watch?v=KqE0P1qMtQg&list=RDKqE0P1qMtQg&start_radio=1" target="_blank">Back to Life</a></li>
-      <li><a href="https://www.youtube.com/watch?v=3FSMCYiC7AI&list=RD3FSMCYiC7AI&start_radio=1" target="_blank">MISMATCH</a></li>
+      <li><a href="https://www.youtube.com/watch?v=Rd2wppggYxo" target="_blank">Party O'clock</a></li>
+      <li><a href="https://www.youtube.com/watch?v=EmeW6li6bbo" target="_blank">Blue Valentine</a></li>
+      <li><a href="https://www.youtube.com/watch?v=34FwKqTKAW8" target="_blank">Shape of Love</a></li>
+      <li><a href="https://www.youtube.com/watch?v=KqE0P1qMtQg" target="_blank">Back to Life</a></li>
+      <li><a href="https://www.youtube.com/watch?v=3FSMCYiC7AI" target="_blank">MISMATCH</a></li>
     </ul>
   </div>
-
-  <script>
-  $(document).ready(function() {
-    $(".container p, .container ul").hide().fadeIn(1500);
-    $("nav a").hover(function() {
-      $(this).css("color", "#b86b50").css("font-size","1.2em");
-    }, function() {
-      $(this).css("color", "#7d5a50").css("font-size","1em");
-    });
-  });
-  </script>
 </body>
 </html>
