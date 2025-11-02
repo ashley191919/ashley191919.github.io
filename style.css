@@ -1,51 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600&display=swap');
+
 body {
-  font-family: "Georgia", "Times New Roman", serif;
-  background-color: #fff8f0;
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: #f9f7f3;
   color: #333;
   margin: 0;
   padding: 0;
+  line-height: 1.8;
+  overflow-x: hidden;
 }
 
 nav {
-  background-color: #f4e1d2;
-  padding: 10px 0;
+  background-color: #e8e4da;
+  padding: 15px;
   text-align: center;
+  border-bottom: 1px solid #d1cfc9;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
 nav a {
-  color: #7d5a50;
+  color: #5c544a;
   text-decoration: none;
   margin: 0 15px;
-  font-weight: bold;
-  transition: color 0.3s;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #a07a5c;
+  bottom: -4px;
+  left: 0;
+  transition: width 0.3s ease;
 }
 
 nav a:hover {
-  color: #b86b50;
+  color: #a07a5c;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 .container {
-  width: 90%;
-  max-width: 900px;
-  margin: 40px auto;
+  max-width: 800px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-h1, h2 {
-  color: #b86b50;
+button {
+  background-color: #a07a5c;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
 }
 
-ul {
-  list-style-type: square;
+button:hover {
+  background-color: #8d6e53;
 }
 
-li a {
-  color: #7d5a50;
+/* 波紋效果 */
+button::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  width: 100px;
+  height: 100px;
+  transform: scale(0);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.6s, opacity 1s;
 }
 
-li a:hover {
-  color: #b86b50;
-  text-decoration: underline;
+button:active::after {
+  transform: scale(2);
+  opacity: 1;
+  transition: 0s;
+}
+
+/* 音樂連結 hover 動畫 */
+ul li a {
+  transition: all 0.3s ease;
+}
+
+ul li a:hover {
+  color: #a07a5c;
+  transform: scale(1.05);
 }
