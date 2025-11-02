@@ -16,12 +16,6 @@
     <a href="hobbies.html">生活與興趣</a>
     <a href="contact.html">聯絡方式</a>
   </nav>
-
-  <div id="controls">
-    <button id="toggleDark">🌙</button>
-    <button id="toggleMusic">🔇</button>
-  </div>
-  <audio id="bgm" src="bgm.mp3" loop></audio>
   
   <div class="container">
     <h1>聯絡方式</h1>
@@ -32,74 +26,101 @@
     <p>GitHub: <a href="https://github.com/ashley191919" target="_blank">github.com/ashley191919</a></p>
   </div>
 
-  
-  <!-- 🎵 背景音樂控制區 -->
+  <!-- 🌙 夜間模式與背景音樂控制區 -->
   <audio id="bgm" loop>
     <source src="bgm.mp3" type="audio/mpeg">
   </audio>
   
-  <div id="music-control">
+  <div id="controls">
+    <button id="toggle-darkmode">🌙 夜間模式</button>
     <button id="toggle-music">🎧 開啟音樂</button>
   </div>
   
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script>
   $(document).ready(function() {
+    // 🌙 夜間模式
+    $("#toggle-darkmode").click(function() {
+      $("body").toggleClass("dark-mode");
+      if ($("body").hasClass("dark-mode")) {
+        $(this).text("☀️ 日間模式");
+      } else {
+        $(this).text("🌙 夜間模式");
+      }
+    });
+  
+    // 🎵 背景音樂
     const audio = $("#bgm")[0];
     let isPlaying = false;
-  
-    // 預設音量低一點（淡淡的背景音樂感覺）
-    audio.volume = 0.2;
+    audio.volume = 0.2; // 淡淡音量
   
     $("#toggle-music").click(function() {
       if (isPlaying) {
         audio.pause();
         $(this).text("🎧 開啟音樂");
-        $(this).css({ backgroundColor: "#f4e1d2", color: "#7d5a50" });
       } else {
         audio.play();
         $(this).text("🔇 關閉音樂");
-        $(this).css({ backgroundColor: "#7d5a50", color: "#fff" });
       }
       isPlaying = !isPlaying;
     });
   
-    // 頁面載入時淡淡播放（有些瀏覽器需使用者互動後才會生效）
+    // 嘗試自動播放（某些瀏覽器需互動後才會啟動）
     try {
       audio.play().then(() => {
         isPlaying = true;
         $("#toggle-music").text("🔇 關閉音樂");
       }).catch(() => {
-        console.log("需要使用者互動後才能播放音樂");
+        console.log("需要互動後才能播放音樂");
       });
     } catch (e) {}
   });
   </script>
   
   <style>
-  #music-control {
+  /* 🌙 夜間模式樣式 */
+  body.dark-mode {
+    background-color: #2f2f2f;
+    color: #eaeaea;
+    transition: background-color 0.5s, color 0.5s;
+  }
+  
+  nav a {
+    transition: color 0.3s;
+  }
+  body.dark-mode nav a {
+    color: #ffd700;
+  }
+  
+  /* 控制按鈕區 */
+  #controls {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 9999;
   }
   
-  #toggle-music {
+  #controls button {
     background-color: #f4e1d2;
     color: #7d5a50;
     border: none;
     border-radius: 20px;
-    padding: 10px 15px;
+    padding: 8px 15px;
     cursor: pointer;
     font-size: 14px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
   
-  #toggle-music:hover {
+  #controls button:hover {
     background-color: #b86b50;
     color: #fff;
     transform: scale(1.05);
   }
   </style>
-  
+
 </body>
 </html>
