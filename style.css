@@ -8,6 +8,7 @@ body {
   padding: 0;
   line-height: 1.8;
   overflow-x: hidden;
+  transition: background-color 0.5s, color 0.5s;
 }
 
 nav {
@@ -57,6 +58,7 @@ nav a:hover::after {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   opacity: 0;
   transform: translateY(20px);
+  transition: background-color 0.5s, color 0.5s;
 }
 
 button {
@@ -68,10 +70,46 @@ button {
   cursor: pointer;
   overflow: hidden;
   position: relative;
+  transition: background-color 0.3s;
 }
 
 button:hover {
   background-color: #8d6e53;
+}
+
+/* 夜間模式 */
+.dark-mode {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+}
+
+.dark-mode nav {
+  background-color: #3b3b3b;
+}
+
+.dark-mode nav a {
+  color: #ddd;
+}
+
+.dark-mode .container {
+  background-color: #3a3a3a;
+  box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+}
+
+/* 右上角控制區 */
+#controls {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 2000;
+}
+
+#controls button {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 50px;
 }
 
 /* 波紋效果 */
